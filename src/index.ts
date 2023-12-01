@@ -38,6 +38,13 @@ export interface RemarkGitHubAlertsOptions {
    * @default 'markdown-alert'
    */
   classPrefix?: string
+
+  /**
+   * Whether to ignore the square brackets in the marker.
+   *
+   * @default false
+   */
+  ignoreSquareBracket?: boolean
 }
 
 function capitalize(str: string) {
@@ -64,10 +71,13 @@ const remarkGithubAlerts: Plugin<RemarkGitHubAlertsOptions[], Root> = (
     matchCaseSensitive = true,
     titles = {},
     classPrefix = "markdown-alert",
+    ignoreSquareBracket = false,
   } = options
 
   const RE = new RegExp(
-    `^\\[\\!(${markers.join("|")})\\]\\s`,
+    ignoreSquareBracket
+      ? `^!(${markers.join("|")})\\s?`
+      : `^\\[\\!(${markers.join("|")})\\]\\s`,
     matchCaseSensitive ? "" : "i",
   )
 
@@ -76,8 +86,16 @@ const remarkGithubAlerts: Plugin<RemarkGitHubAlertsOptions[], Root> = (
       const children = node.children as Paragraph[]
       const firstParagraph = children[0]
       if (!firstParagraph) return
-      const firstContent = firstParagraph.children[0]
-      if (!firstContent || firstContent.type !== "text") return
+      let firstContent = firstParagraph.children[0]
+      if (!firstContent) return
+      if (
+        !("value" in firstContent) &&
+        "children" in firstContent &&
+        firstContent.children[0]
+      ) {
+        firstContent = firstContent.children[0]
+      }
+      if (firstContent.type !== "text") return
       const match = firstContent.value.match(RE)
       if (!match) return
 
