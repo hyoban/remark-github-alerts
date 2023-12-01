@@ -16,8 +16,8 @@ import remarkGithubAlerts from "remark-github-alerts"
 const processor = unified()
   .use(remarkParse)
   .use(remarkGithubAlerts)
-  .use(remarkRehype)
-  .use(rehypeStringify)
+  .use(remarkRehype, { allowDangerousHtml: true })
+  .use(rehypeStringify, { allowDangerousHtml: true })
 ```
 
 If you are using Nextra, you can add the plugin to your `next.config.mjs`:

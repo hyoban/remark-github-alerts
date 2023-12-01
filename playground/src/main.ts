@@ -11,8 +11,8 @@ import "remark-github-alerts/styles/github-base.css"
 const processor = unified()
   .use(remarkParse)
   .use(remarkGithubAlerts)
-  .use(remarkRehype)
-  .use(rehypeStringify)
+  .use(remarkRehype, { allowDangerousHtml: true })
+  .use(rehypeStringify, { allowDangerousHtml: true })
 
 processor
   .process(
