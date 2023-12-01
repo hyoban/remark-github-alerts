@@ -1,6 +1,4 @@
-import rehypeFormat from "rehype-format"
 import rehypeStringify from "rehype-stringify"
-import remarkGfm from "remark-gfm"
 import remarkGithubAlerts from "remark-github-alerts"
 import remarkParse from "remark-parse"
 import remarkRehype from "remark-rehype"
@@ -12,25 +10,13 @@ import "remark-github-alerts/styles/github-base.css"
 
 const processor = unified()
   .use(remarkParse)
-  .use(remarkGfm)
   .use(remarkGithubAlerts)
   .use(remarkRehype)
-  .use(rehypeFormat)
   .use(rehypeStringify)
 
 processor
   .process(
     `
-# Hello World
-
-## Table of Content
-
-## Install
-
-A **example**.
-
-## Use
-
 > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
@@ -45,10 +31,6 @@ A **example**.
 
 > [!CAUTION]
 > Negative potential consequences of an action.
-
-## License
-
-MIT
 `,
   )
   .then((file) => {

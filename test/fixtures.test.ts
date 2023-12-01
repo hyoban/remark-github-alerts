@@ -1,7 +1,6 @@
 /// <reference types="vite/client" />
 import rehypeFormat from "rehype-format"
 import rehypeStringify from "rehype-stringify"
-import remarkGfm from "remark-gfm"
 import remarkParse from "remark-parse"
 import remarkRehype from "remark-rehype"
 import { unified } from "unified"
@@ -14,7 +13,6 @@ describe("should", async () => {
 
   const processor = unified()
     .use(remarkParse)
-    .use(remarkGfm)
     .use(remarkGithubAlerts)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeFormat)

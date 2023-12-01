@@ -8,7 +8,7 @@
 
 1. Ported from [antfu/markdown-it-github-alerts](https://github.com/antfu/markdown-it-github-alerts)
 1. Support GitHub-style alerts for remark
-1. Check demo from [here](./playground/src/main.ts)
+1. Check out the [documentation](https://remark-github-alerts.vercel.app)
 
 <!-- Badges -->
 
