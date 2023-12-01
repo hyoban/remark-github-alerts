@@ -24,8 +24,8 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       remark-github-alerts:
-        specifier: ^0.0.1
-        version: 0.0.1(@types/mdast@4.0.3)(unified@11.0.4)
+        specifier: latest
+        version: 0.0.2(@types/mdast@4.0.3)(unified@11.0.4)
     devDependencies:
       '@types/node':
         specifier: 18.11.10
@@ -2363,8 +2363,8 @@ packages:
       - supports-color
     dev: false
 
-  /remark-github-alerts@0.0.1(@types/mdast@4.0.3)(unified@11.0.4):
-    resolution: {integrity: sha512-Y7tL66xm7CR7DROMbpdj4vVGn6OHTmYZvnmeUsW8fBkR5xqKs0cUQ1GE5u/7bBg7qwXswgJqBEJmkZYNnjn45A==}
+  /remark-github-alerts@0.0.2(@types/mdast@4.0.3)(unified@11.0.4):
+    resolution: {integrity: sha512-Sg12BXLjOSeyG4Td6nY514DFyccx3GU5Rq9ITfm0BlfM9JHPRwDYhkFzwNQwugXaykyjqhSw11lDBws1FXz5Ow==}
     peerDependencies:
       '@types/mdast': ^4.0.3
       unified: ^11.0.4
