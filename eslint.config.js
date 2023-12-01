@@ -38,6 +38,8 @@ export default [
       "unicorn/catch-error-name": "off",
       "unicorn/prefer-top-level-await": "off",
       "unicorn/no-null": "off",
+
+      "no-console": ["warn", { allow: ["warn", "error"] }],
     },
   },
   // disable formatting rules, make sure to put this last

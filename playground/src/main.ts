@@ -14,9 +14,9 @@ const processor = unified()
   .use(remarkParse)
   .use(remarkGfm)
   .use(remarkGithubAlerts)
-  .use(remarkRehype, { allowDangerousHtml: true })
+  .use(remarkRehype)
   .use(rehypeFormat)
-  .use(rehypeStringify, { allowDangerousHtml: true })
+  .use(rehypeStringify)
 
 processor
   .process(

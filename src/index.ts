@@ -98,8 +98,23 @@ const remarkGithubAlerts: Plugin<RemarkGitHubAlertsOptions[], Root> = (
       }
       node.children = [
         {
-          type: "html",
-          value: `<p class="${classPrefix}-title">${icon}${title}</p>`,
+          type: "paragraph",
+          data: {
+            hName: "p",
+            hProperties: {
+              class: `${classPrefix}-title`,
+            },
+          },
+          children: [
+            {
+              type: "html",
+              value: icon,
+            },
+            {
+              type: "text",
+              value: title,
+            },
+          ],
         },
         ...node.children,
       ]
