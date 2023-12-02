@@ -45,6 +45,7 @@
     "release": "bumpp && npm publish",
     "start": "esno src/index.ts",
     "test": "vitest",
+    "test:run": "vitest run",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -85,6 +86,6 @@
     "vitest": "^1.0.0-beta.6"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm run format:check && pnpm run lint && pnpm run typecheck"
+    "pre-commit": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test:run && pnpm build"
   }
 }
