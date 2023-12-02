@@ -12,39 +12,39 @@ import remarkGithubAlerts from "../src"
 
 const testFiles = {
   "basic.html": dedent`
-  > [!NOTE]
-  > Highlights information that users should take into account, even when skimming.
+    > [!NOTE]
+    > Highlights information that users should take into account, even when skimming.
 
-  > [!TIP]
-  > Optional information to help a user be more successful.
+    > [!TIP]
+    > Optional information to help a user be more successful.
 
-  > [!IMPORTANT]
-  > Crucial information necessary for users to succeed.
+    > [!IMPORTANT]
+    > Crucial information necessary for users to succeed.
 
-  > [!WARNING]
-  > Critical content demanding immediate user attention due to potential risks.
+    > [!WARNING]
+    > Critical content demanding immediate user attention due to potential risks.
 
-  > [!CAUTION]
-  > Negative potential consequences of an action.
+    > [!CAUTION]
+    > Negative potential consequences of an action.
 
-  > [!NOTE]
-  > Nested **markdown**
+    > [!NOTE]
+    > Nested **markdown**
 
-  normal paragraph
+    normal paragraph
 
-  > normal blockquote
+    > normal blockquote
   `,
   "markers.html": dedent`
-  # Custom
+    # Custom
 
-  > [!nOtE] My title
-  > With \`markers: '*'\` case of chars is not required and titles are supported.
-  > [!custom]
-  > Also any other alert name is allowed.
+    > [!nOtE] My title
+    > With \`markers: '*'\` case of chars is not required and titles are supported.
+    > [!custom]
+    > Also any other alert name is allowed.
   `,
 }
 
-describe("basic processor", async () => {
+describe("basic processor", () => {
   const processor = unified()
     .use(remarkParse)
     .use(remarkGithubAlerts)
@@ -55,14 +55,14 @@ describe("basic processor", async () => {
   for (const [filename, content] of Object.entries(testFiles)) {
     it(filename, async () => {
       const result = await processor.process(content)
-      expect(String(result)).toMatchFileSnapshot(
+      void expect(String(result)).toMatchFileSnapshot(
         `./snapshots/basic/${filename}`,
       )
     })
   }
 })
 
-describe("processor with remark mdc", async () => {
+describe("processor with remark mdc", () => {
   const processor = unified()
     .use(remarkParse)
     .use(remarkMdc)
@@ -75,14 +75,14 @@ describe("processor with remark mdc", async () => {
     it(filename, async () => {
       const result = await processor.process(content)
 
-      expect(String(result)).toMatchFileSnapshot(
+      void expect(String(result)).toMatchFileSnapshot(
         `./snapshots/remark-mdc/${filename}`,
       )
     })
   }
 })
 
-describe("processor with markers *", async () => {
+describe("processor with markers *", () => {
   const processor = unified()
     .use(remarkParse)
     .use(remarkGithubAlerts, { markers: "*" })
@@ -94,7 +94,7 @@ describe("processor with markers *", async () => {
     it(filename, async () => {
       const result = await processor.process(content)
 
-      expect(String(result)).toMatchFileSnapshot(
+      void expect(String(result)).toMatchFileSnapshot(
         `./snapshots/markers-*/${filename}`,
       )
     })

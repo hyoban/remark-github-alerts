@@ -4,7 +4,7 @@ import tsParser from "@typescript-eslint/parser"
 import prettier from "eslint-config-prettier"
 import unicorn from "eslint-plugin-unicorn"
 
-const files = ["src/**/*.{ts,tsx}"]
+const files = ["src/**/*.ts", "test/**/*.ts"]
 const languageOptions = {
   parser: tsParser,
   parserOptions: {
@@ -35,9 +35,6 @@ export default [
 
       ...unicorn.configs.recommended.rules,
       "unicorn/prevent-abbreviations": "off",
-      "unicorn/catch-error-name": "off",
-      "unicorn/prefer-top-level-await": "off",
-      "unicorn/no-null": "off",
 
       "no-console": ["warn", { allow: ["warn", "error"] }],
     },
