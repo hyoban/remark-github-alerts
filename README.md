@@ -30,12 +30,19 @@ const processor = unified()
   .use(rehypeStringify, { allowDangerousHtml: true })
 ```
 
+Import the styles:
+
+```ts
+import "remark-github-alerts/styles/github-colors-light.css"
+import "remark-github-alerts/styles/github-colors-dark-class.css"
+// or
+// import "remark-github-alerts/styles/github-colors-dark-media.css"
+import "remark-github-alerts/styles/github-base.css"
+```
+
 If you are using Nextra, you can add the plugin to your `next.config.mjs`:
 
-> [!IMPORTANT]
-> Currently, you can only use github alerts in markdown files, `mdx` files are not supported.
-
-```tsx
+```ts
 import nextra from "nextra"
 import remarkGithubAlerts from "remark-github-alerts"
 
@@ -50,14 +57,30 @@ const withNextra = nextra({
 export default withNextra()
 ```
 
-Import the styles:
+If you also want to use mdx, you need to use `rehype-raw` and set `passThrough` option:
 
 ```ts
-import "remark-github-alerts/styles/github-colors-light.css"
-import "remark-github-alerts/styles/github-colors-dark-class.css"
-// or
-// import "remark-github-alerts/styles/github-colors-dark-media.css"
-import "remark-github-alerts/styles/github-base.css"
+import nextra from "nextra"
+import rehypeRaw from "rehype-raw"
+import remarkGithubAlerts from "remark-github-alerts"
+
+const withNextra = nextra({
+  theme: "nextra-theme-docs",
+  themeConfig: "./theme.config.tsx",
+  mdxOptions: {
+    remarkPlugins: [remarkGithubAlerts],
+    rehypePlugins: [
+      [
+        rehypeRaw,
+        {
+          passThrough: ["mdxjsEsm", "mdxJsxFlowElement"],
+        },
+      ],
+    ],
+  },
+})
+
+export default withNextra()
 ```
 
 ## Check Also

@@ -49,7 +49,7 @@
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "simple-git-hooks"
+    "prepare": "simple-git-hooks && pnpm build"
   },
   "dependencies": {
     "unist-util-visit": "^5.0.0"
@@ -74,6 +74,7 @@
     "pnpm": "^8.11.0",
     "prettier": "^3.1.0",
     "rehype-format": "^5.0.0",
+    "rehype-raw": "^7.0.0",
     "rehype-stringify": "^10.0.0",
     "remark-mdc": "^2.1.0",
     "remark-parse": "^11.0.0",
