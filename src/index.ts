@@ -8,7 +8,7 @@ export interface RemarkGitHubAlertsOptions {
    * List of markers to match.
    * @default ['TIP', 'NOTE', 'IMPORTANT', 'WARNING', 'CAUTION']
    */
-  markers?: string[]
+  markers?: string[] | "*"
 
   /**
    * If markers case sensitively on matching.
@@ -38,6 +38,8 @@ export interface RemarkGitHubAlertsOptions {
    * @default 'markdown-alert'
    */
   classPrefix?: string
+
+  // ^ options from MarkdownItGitHubAlertsOptions
 
   /**
    * Whether to ignore the square brackets in the marker.
@@ -74,10 +76,11 @@ const remarkGithubAlerts: Plugin<RemarkGitHubAlertsOptions[], Root> = (
     ignoreSquareBracket = false,
   } = options
 
+  const markerNameRE = markers === "*" ? "\\w+" : markers.join("|")
   const RE = new RegExp(
     ignoreSquareBracket
-      ? `^!(${markers.join("|")})\\s?`
-      : `^\\[\\!(${markers.join("|")})\\]\\s`,
+      ? `^!(${markerNameRE})\\s?`
+      : `^\\[\\!(${markerNameRE})\\]\\s`,
     matchCaseSensitive ? "" : "i",
   )
 
@@ -100,9 +103,8 @@ const remarkGithubAlerts: Plugin<RemarkGitHubAlertsOptions[], Root> = (
       if (!match) return
 
       const type = match[1]?.toLowerCase() as keyof typeof icons
-      const title = titles[type] ?? capitalize(type)
+      const title = match[2]?.trim() || (titles[type] ?? capitalize(type))
       const icon = icons[type]
-      if (!icon) throw new Error(`No icon found for marker ${type}`)
 
       if (index === undefined || !parent) return
 

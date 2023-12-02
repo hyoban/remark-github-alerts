@@ -34,6 +34,14 @@ const testFiles = {
 
   > normal blockquote
   `,
+  "markers.html": dedent`
+  # Custom
+
+  > [!nOtE] My title
+  > With \`markers: '*'\` case of chars is not required and titles are supported.
+  > [!custom]
+  > Also any other alert name is allowed.
+  `,
 }
 
 describe("basic processor", async () => {
@@ -69,6 +77,25 @@ describe("processor with remark mdc", async () => {
 
       expect(String(result)).toMatchFileSnapshot(
         `./snapshots/remark-mdc/${filename}`,
+      )
+    })
+  }
+})
+
+describe("processor with markers *", async () => {
+  const processor = unified()
+    .use(remarkParse)
+    .use(remarkGithubAlerts, { markers: "*" })
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeFormat)
+    .use(rehypeStringify, { allowDangerousHtml: true })
+
+  for (const [filename, content] of Object.entries(testFiles)) {
+    it(filename, async () => {
+      const result = await processor.process(content)
+
+      expect(String(result)).toMatchFileSnapshot(
+        `./snapshots/markers-*/${filename}`,
       )
     })
   }
