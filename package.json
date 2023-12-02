@@ -65,6 +65,7 @@
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^6.13.1",
     "bumpp": "^9.2.0",
+    "dedent": "^1.5.1",
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-unicorn": "^49.0.0",

@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+import dedent from "dedent"
 import rehypeFormat from "rehype-format"
 import rehypeStringify from "rehype-stringify"
 import remarkMdc from "remark-mdc"
@@ -9,9 +10,33 @@ import { describe, expect, it } from "vitest"
 
 import remarkGithubAlerts from "../src"
 
-describe("basic processor", async () => {
-  const files = import.meta.glob("./fixtures/*.md", { as: "raw" })
+const testFiles = {
+  "basic.md": dedent`
+  > [!NOTE]
+  > Highlights information that users should take into account, even when skimming.
 
+  > [!TIP]
+  > Optional information to help a user be more successful.
+
+  > [!IMPORTANT]
+  > Crucial information necessary for users to succeed.
+
+  > [!WARNING]
+  > Critical content demanding immediate user attention due to potential risks.
+
+  > [!CAUTION]
+  > Negative potential consequences of an action.
+
+  > [!NOTE]
+  > Nested **markdown**
+
+  normal paragraph
+
+  > normal blockquote
+  `,
+}
+
+describe("basic processor", async () => {
   const processor = unified()
     .use(remarkParse)
     .use(remarkGithubAlerts)
@@ -19,9 +44,8 @@ describe("basic processor", async () => {
     .use(rehypeFormat)
     .use(rehypeStringify, { allowDangerousHtml: true })
 
-  for (const [file, read] of Object.entries(files)) {
-    it(file, async () => {
-      const content = await read()
+  for (const [filename, content] of Object.entries(testFiles)) {
+    it(filename, async () => {
       const result = await processor.process(content)
 
       expect(String(result)).toMatchInlineSnapshot(`
@@ -61,8 +85,6 @@ describe("basic processor", async () => {
 })
 
 describe("processor with remark mdc", async () => {
-  const files = import.meta.glob("./fixtures/*.md", { as: "raw" })
-
   const processor = unified()
     .use(remarkParse)
     .use(remarkMdc)
@@ -71,9 +93,8 @@ describe("processor with remark mdc", async () => {
     .use(rehypeFormat)
     .use(rehypeStringify, { allowDangerousHtml: true })
 
-  for (const [file, read] of Object.entries(files)) {
-    it(file, async () => {
-      const content = await read()
+  for (const [filename, content] of Object.entries(testFiles)) {
+    it(filename, async () => {
       const result = await processor.process(content)
 
       expect(String(result)).toMatchInlineSnapshot(`
