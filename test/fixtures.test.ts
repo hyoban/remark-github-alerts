@@ -95,7 +95,7 @@ describe("processor with markers *", () => {
       const result = await processor.process(content)
 
       void expect(String(result)).toMatchFileSnapshot(
-        `./snapshots/markers-*/${filename}`,
+        `./snapshots/custom-markers/${filename}`,
       )
     })
   }
