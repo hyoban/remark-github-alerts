@@ -8,7 +8,63 @@
 
 1. Ported from [antfu/markdown-it-github-alerts](https://github.com/antfu/markdown-it-github-alerts)
 1. Support GitHub-style alerts for remark
-1. Check out the [documentation](https://remark-github-alerts.vercel.app)
+1. Check out the [demo](https://remark-github-alerts.vercel.app)
+
+## Usage
+
+Install the package:
+
+```sh
+ni remark-github-alerts
+```
+
+Add the plugin to your `processor`:
+
+```ts
+import remarkGithubAlerts from "remark-github-alerts"
+
+const processor = unified()
+  .use(remarkParse)
+  .use(remarkGithubAlerts)
+  .use(remarkRehype, { allowDangerousHtml: true })
+  .use(rehypeStringify, { allowDangerousHtml: true })
+```
+
+If you are using Nextra, you can add the plugin to your `next.config.mjs`:
+
+> [!IMPORTANT]
+> Currently, you can only use github alerts in markdown files, `mdx` files are not supported.
+
+```tsx
+import nextra from "nextra"
+import remarkGithubAlerts from "remark-github-alerts"
+
+const withNextra = nextra({
+  theme: "nextra-theme-docs",
+  themeConfig: "./theme.config.tsx",
+  mdxOptions: {
+    remarkPlugins: [remarkGithubAlerts],
+  },
+})
+
+export default withNextra()
+```
+
+Import the styles:
+
+```ts
+import "remark-github-alerts/styles/github-colors-light.css"
+import "remark-github-alerts/styles/github-colors-dark-class.css"
+// or
+// import "remark-github-alerts/styles/github-colors-dark-media.css"
+import "remark-github-alerts/styles/github-base.css"
+```
+
+## Check Also
+
+- [GitHub-style alerts](https://github.com/orgs/community/discussions/16925)
+- [markdown-it-github-alerts](https://github.com/antfu/markdown-it-github-alerts)
+- [vscode-markdown-alert](https://github.com/KeJunMao/vscode-markdown-alert)
 
 <!-- Badges -->
 
