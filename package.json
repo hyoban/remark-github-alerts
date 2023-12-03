@@ -42,7 +42,7 @@
     "dev": "unbuild --stub",
     "lint": "eslint --max-warnings 0 .",
     "prepublishOnly": "nr build",
-    "release": "changelogen --clean --output && prettier --write CHANGELOG.md && bumpp && npm publish",
+    "release": "changelogen --clean --output && prettier --write CHANGELOG.md && git add CHANGELOG.md && bumpp && npm publish",
     "start": "esno src/index.ts",
     "test": "vitest",
     "test:run": "vitest run",
