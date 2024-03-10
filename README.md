@@ -88,6 +88,7 @@ export default withNextra()
 - [GitHub-style alerts](https://github.com/orgs/community/discussions/16925)
 - [markdown-it-github-alerts](https://github.com/antfu/markdown-it-github-alerts)
 - [vscode-markdown-alert](https://github.com/KeJunMao/vscode-markdown-alert)
+- [remark-github-alerts](https://github.com/qhanw/remark-gh-alerts)
 
 <!-- Badges -->
 
