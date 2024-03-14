@@ -77,6 +77,8 @@
     "rehype-format": "^5.0.0",
     "rehype-raw": "^7.0.0",
     "rehype-stringify": "^10.0.0",
+    "release-it": "^17.1.1",
+    "release-it-pnpm": "^4.0.2",
     "remark-mdc": "^2.1.0",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.0.0",
