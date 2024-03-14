@@ -21,30 +21,30 @@ ni remark-github-alerts
 Add the plugin to your `processor`:
 
 ```ts
-import remarkGithubAlerts from "remark-github-alerts"
+import remarkGithubAlerts from "remark-github-alerts";
 
 const processor = unified()
   .use(remarkParse)
   .use(remarkGithubAlerts)
   .use(remarkRehype, { allowDangerousHtml: true })
-  .use(rehypeStringify, { allowDangerousHtml: true })
+  .use(rehypeStringify, { allowDangerousHtml: true });
 ```
 
 Import the styles:
 
 ```ts
-import "remark-github-alerts/styles/github-colors-light.css"
-import "remark-github-alerts/styles/github-colors-dark-class.css"
+import "remark-github-alerts/styles/github-colors-light.css";
+import "remark-github-alerts/styles/github-colors-dark-class.css";
 // or
 // import "remark-github-alerts/styles/github-colors-dark-media.css"
-import "remark-github-alerts/styles/github-base.css"
+import "remark-github-alerts/styles/github-base.css";
 ```
 
 If you are using Nextra, you can add the plugin to your `next.config.mjs`:
 
 ```ts
-import nextra from "nextra"
-import remarkGithubAlerts from "remark-github-alerts"
+import nextra from "nextra";
+import remarkGithubAlerts from "remark-github-alerts";
 
 const withNextra = nextra({
   theme: "nextra-theme-docs",
@@ -52,17 +52,17 @@ const withNextra = nextra({
   mdxOptions: {
     remarkPlugins: [remarkGithubAlerts],
   },
-})
+});
 
-export default withNextra()
+export default withNextra();
 ```
 
 If you also want to use mdx, you need to use `rehype-raw` and set `passThrough` option:
 
 ```ts
-import nextra from "nextra"
-import rehypeRaw from "rehype-raw"
-import remarkGithubAlerts from "remark-github-alerts"
+import nextra from "nextra";
+import rehypeRaw from "rehype-raw";
+import remarkGithubAlerts from "remark-github-alerts";
 
 const withNextra = nextra({
   theme: "nextra-theme-docs",
@@ -78,9 +78,9 @@ const withNextra = nextra({
       ],
     ],
   },
-})
+});
 
-export default withNextra()
+export default withNextra();
 ```
 
 ## Check Also
