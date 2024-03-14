@@ -38,7 +38,7 @@
     "build": "unbuild",
     "dev": "unbuild --stub",
     "lint": "eslint .",
-    "prepare": "simple-git-hooks",
+    "prepare": "simple-git-hooks && nr build",
     "prepublishOnly": "nr build",
     "start": "esno src/index.ts",
     "test": "vitest",
