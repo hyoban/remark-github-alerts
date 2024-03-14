@@ -1,12 +1,12 @@
-import "remark-github-alerts/styles/github-colors-light.css"
-import "remark-github-alerts/styles/github-colors-dark-class.css"
-import "remark-github-alerts/styles/github-base.css"
+import 'remark-github-alerts/styles/github-colors-light.css'
+import 'remark-github-alerts/styles/github-colors-dark-class.css'
+import 'remark-github-alerts/styles/github-base.css'
 
-import rehypeStringify from "rehype-stringify"
-import remarkGithubAlerts from "remark-github-alerts"
-import remarkParse from "remark-parse"
-import remarkRehype from "remark-rehype"
-import { unified } from "unified"
+import rehypeStringify from 'rehype-stringify'
+import remarkGithubAlerts from 'remark-github-alerts'
+import remarkParse from 'remark-parse'
+import remarkRehype from 'remark-rehype'
+import { unified } from 'unified'
 
 const processor = unified()
   .use(remarkParse)
@@ -35,5 +35,5 @@ processor
   )
   // eslint-disable-next-line github/no-then
   .then((file) => {
-    document.querySelector<HTMLDivElement>("#app")!.innerHTML = String(file)
+    document.querySelector<HTMLDivElement>('#app')!.innerHTML = String(file)
   })

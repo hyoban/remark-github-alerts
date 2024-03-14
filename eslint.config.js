@@ -1,3 +1,3 @@
-import hyoban from "eslint-config-hyoban"
+import hyoban from 'eslint-config-hyoban'
 
-export default hyoban({ ignores: ["test/snapshots/**"], style: { quotes: "double" } })
+export default hyoban({ ignores: ['test/snapshots/**'] })

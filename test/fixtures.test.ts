@@ -1,17 +1,17 @@
 /// <reference types="vite/client" />
-import dedent from "dedent"
-import rehypeFormat from "rehype-format"
-import rehypeStringify from "rehype-stringify"
-import remarkMdc from "remark-mdc"
-import remarkParse from "remark-parse"
-import remarkRehype from "remark-rehype"
-import { unified } from "unified"
-import { describe, expect, it } from "vitest"
+import dedent from 'dedent'
+import rehypeFormat from 'rehype-format'
+import rehypeStringify from 'rehype-stringify'
+import remarkMdc from 'remark-mdc'
+import remarkParse from 'remark-parse'
+import remarkRehype from 'remark-rehype'
+import { unified } from 'unified'
+import { describe, expect, it } from 'vitest'
 
-import remarkGithubAlerts from "../src"
+import remarkGithubAlerts from '../src'
 
 const testFiles = {
-  "basic.html": dedent`
+  'basic.html': dedent`
     > [!NOTE]
     > Highlights information that users should take into account, even when skimming.
 
@@ -34,7 +34,7 @@ const testFiles = {
 
     > normal blockquote
   `,
-  "markers.html": dedent`
+  'markers.html': dedent`
     # Custom
 
     > [!nOtE] My title
@@ -44,7 +44,7 @@ const testFiles = {
   `,
 }
 
-describe("basic processor", () => {
+describe('basic processor', () => {
   const processor = unified()
     .use(remarkParse)
     .use(remarkGithubAlerts)
@@ -62,7 +62,7 @@ describe("basic processor", () => {
   }
 })
 
-describe("processor with remark mdc", () => {
+describe('processor with remark mdc', () => {
   const processor = unified()
     .use(remarkParse)
     .use(remarkMdc)
@@ -82,10 +82,10 @@ describe("processor with remark mdc", () => {
   }
 })
 
-describe("processor with markers *", () => {
+describe('processor with markers *', () => {
   const processor = unified()
     .use(remarkParse)
-    .use(remarkGithubAlerts, { markers: "*" })
+    .use(remarkGithubAlerts, { markers: '*' })
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeFormat)
     .use(rehypeStringify, { allowDangerousHtml: true })
