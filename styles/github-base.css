@@ -22,6 +22,22 @@
 
 .markdown-alert .markdown-alert-title .octicon {
   margin-right: 0.5rem;
+  overflow: visible !important;
+
+  -webkit-mask: var(--oct-icon) no-repeat;
+  mask: var(--oct-icon) no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  background-color: currentColor;
+  color: inherit;
+  display: inline-block;
+  vertical-align: -0.125em;
+  width: 1em;
+  height: 1em;
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
   display: inline-block;
   overflow: visible !important;
   vertical-align: text-bottom;

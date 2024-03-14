@@ -11,8 +11,8 @@ import { unified } from 'unified'
 const processor = unified()
   .use(remarkParse)
   .use(remarkGithubAlerts)
-  .use(remarkRehype, { allowDangerousHtml: true })
-  .use(rehypeStringify, { allowDangerousHtml: true })
+  .use(remarkRehype)
+  .use(rehypeStringify)
 
 processor
   .process(
