@@ -26,8 +26,8 @@ import remarkGithubAlerts from "remark-github-alerts";
 const processor = unified()
   .use(remarkParse)
   .use(remarkGithubAlerts)
-  .use(remarkRehype, { allowDangerousHtml: true })
-  .use(rehypeStringify, { allowDangerousHtml: true });
+  .use(remarkRehype)
+  .use(rehypeStringify);
 ```
 
 Import the styles:
@@ -51,32 +51,6 @@ const withNextra = nextra({
   themeConfig: "./theme.config.tsx",
   mdxOptions: {
     remarkPlugins: [remarkGithubAlerts],
-  },
-});
-
-export default withNextra();
-```
-
-If you also want to use mdx, you need to use `rehype-raw` and set `passThrough` option:
-
-```ts
-import nextra from "nextra";
-import rehypeRaw from "rehype-raw";
-import remarkGithubAlerts from "remark-github-alerts";
-
-const withNextra = nextra({
-  theme: "nextra-theme-docs",
-  themeConfig: "./theme.config.tsx",
-  mdxOptions: {
-    remarkPlugins: [remarkGithubAlerts],
-    rehypePlugins: [
-      [
-        rehypeRaw,
-        {
-          passThrough: ["mdxjsEsm", "mdxJsxFlowElement"],
-        },
-      ],
-    ],
   },
 });
 
