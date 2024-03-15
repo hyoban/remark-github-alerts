@@ -31,17 +31,9 @@
   background-color: currentColor;
   color: inherit;
   display: inline-block;
-  vertical-align: -0.125em;
+  vertical-align: text-bottom;
   width: 1em;
   height: 1em;
-}
-
-.markdown-alert .markdown-alert-title .octicon {
-  margin-right: 0.5rem;
-  display: inline-block;
-  overflow: visible !important;
-  vertical-align: text-bottom;
-  fill: currentColor;
 }
 
 .markdown-alert.markdown-alert-note {
