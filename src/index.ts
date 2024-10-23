@@ -87,8 +87,8 @@ const remarkGithubAlerts: Plugin<RemarkGitHubAlertsOptions[], Root> = (
   const markerNameRE = markers === '*' ? '\\w+' : markers.join('|')
   const RE = new RegExp(
     ignoreSquareBracket
-      ? `^!(${markerNameRE})\\s?`
-      : `^\\[\\!(${markerNameRE})\\]\\s`,
+      ? `^!(${markerNameRE})([^\\n\\r]*)`
+      : `^\\[\\!(${markerNameRE})\\]([^\\n\\r]*)`,
     matchCaseSensitive ? '' : 'i',
   )
 
