@@ -98,7 +98,7 @@ const remarkGithubAlerts: Plugin<RemarkGitHubAlertsOptions[], Root> = (
       const firstParagraph = children[0]
       if (!firstParagraph)
         return
-      let firstContent = firstParagraph.children[0]
+      let firstContent = firstParagraph.children?.[0]
       if (!firstContent)
         return
       if (
