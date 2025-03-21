@@ -1,7 +1,7 @@
 {
   "name": "remark-github-alerts",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "packageManager": "pnpm@10.6.5",
   "description": "Support GitHub-style alerts for remark",
   "author": "Stephen Zhou <hi@hyoban.cc>",
