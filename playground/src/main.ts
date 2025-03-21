@@ -33,7 +33,6 @@ processor
 > Negative potential consequences of an action.
 `,
   )
-  // eslint-disable-next-line github/no-then
   .then((file) => {
     document.querySelector<HTMLDivElement>('#app')!.innerHTML = String(file)
   })

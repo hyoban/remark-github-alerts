@@ -1,3 +1,5 @@
-import hyoban from 'eslint-config-hyoban'
+import { defineConfig } from 'eslint-config-hyoban'
 
-export default hyoban({ ignores: ['test/snapshots/**'] })
+export default defineConfig({
+  ignores: ['test/snapshots/**'],
+})

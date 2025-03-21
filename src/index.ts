@@ -105,8 +105,9 @@ const remarkGithubAlerts: Plugin<RemarkGitHubAlertsOptions[], Root> = (
         !('value' in firstContent)
         && 'children' in firstContent
         && firstContent.children[0]
-      )
+      ) {
         firstContent = firstContent.children[0]
+      }
 
       if (firstContent.type !== 'text')
         return
